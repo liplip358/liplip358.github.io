@@ -33,11 +33,8 @@
 
 .main-nav-list a {
     font-size: 2.4rem;
-    /* 調整文字大小 */
     color: white;
-    /* 文字顏色 */
     text-decoration: none;
-    /* 去掉下劃線 */
 }
 
 
@@ -52,18 +49,32 @@
     left: 50%;
     animation: float 20s linear infinite;
     z-index: 0;
-    /* 確保文字在上層 */
 }
 
-/* Section Hero 保持原樣 */
+/* Section Hero */
 .section-hero {
     height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    /* 確保圖片從外面進來時不會有捲軸 */
     color: white;
 }
+
+/* 新增 hero-content 容器來管理文字和圖片的 flex 佈局 */
+.hero-content {
+    display: flex;
+    align-items: center;
+    /* 垂直居中對齊 */
+    justify-content: center;
+    /* 初始水平居中，動畫後會改變 */
+    width: 100%;
+    /* 佔滿 section-hero 寬度 */
+    position: relative;
+    /* 為了讓圖片定位 */
+}
+
 
 /* 漸層動畫共用 */
 @keyframes gradient {
@@ -98,29 +109,99 @@
 /* Hero 文字 */
 .hero-text-box {
     position: relative;
+    /* 為了 z-index 和 transform */
     z-index: 2;
     font-size: 6.4rem;
     font-weight: 700;
-    width: 15ch;
+    width: 0ch;
+    max-width: 15ch;
     overflow: hidden;
     white-space: nowrap;
-    border-right: 3px solid #eee;
+    border-right: 3px solid transparent;
+    /* top: -10rem;  移除這個，讓 flex 佈局控制垂直位置 */
     font-family: "JetBrains Mono", monospace;
-    animation: typing 3s steps(15), blink .6s step-end infinite alternate;
+    /* text-align: center; 移除這個，因為 flex 佈局會處理 */
+    flex-shrink: 0;
+    /* 防止文字在寬度不足時縮小 */
+
+
+    animation:
+        typing 3s steps(15) forwards,
+        move-left 2s 3s forwards,
+        cursor-blink 1s 5s infinite step-end;
 }
 
 @keyframes typing {
     from {
-        width: 0;
+        width: 0ch;
+        border-color: #eee;
     }
 
     to {
         width: 15ch;
+        border-color: #eee;
     }
 }
 
-@keyframes blink {
+/* 平滑移動到最左邊 */
+@keyframes move-left {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        /* 將 -20vw 改為更大的負數，例如 -35vw */
+        transform: translateX(-25vw);
+    }
+}
+
+@keyframes cursor-blink {
+
+    0%,
+    100% {
+        border-color: #eee;
+    }
+
     50% {
         border-color: transparent;
+    }
+}
+
+/* Hero 圖片 */
+.hero-img {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%) translateX(100%);
+    opacity: 0;
+    z-index: 1;
+    animation: image-slide-in 2s 3s forwards;
+
+    /* === 新增/修改：給容器一個明確的寬度 === */
+    width: 50vw;
+    /* 設置容器寬度為螢幕寬度的 50% */
+
+    right: 10rem;
+}
+
+.hero-img img {
+    /* === 修改：讓圖片填滿容器 === */
+    width: 100%;
+    /* 圖片寬度填滿其父容器 (.hero-img) */
+    height: auto;
+    display: block;
+    border-radius: 1.2rem;
+}
+
+/* 新增圖片滑入動畫 */
+@keyframes image-slide-in {
+    from {
+        transform: translateY(-50%) translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(-50%) translateX(0);
+        opacity: 1;
     }
 }
