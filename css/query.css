@@ -1,0 +1,65 @@
+/* ---------- Mobile / persistent touch toggle for introduction grid ---------- */
+@media (max-width: 768px) {
+    .introduction-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+        padding: 3rem 1.6rem;
+        justify-items: stretch;
+        align-items: stretch;
+    }
+
+    .grid-item {
+        width: 100%;
+        padding: 2.4rem 1.6rem;
+        border-radius: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
+    }
+
+    /* 將重疊文字改為流內排列，方便點擊與可存續顯示 */
+    .grid-item .main-text,
+    .grid-item .hover-text {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        width: 100%;
+        text-align: center;
+        margin: 0;
+    }
+
+    .grid-item .main-text {
+        font-size: 2.4rem;
+        opacity: 1;
+    }
+
+    .grid-item .hover-text {
+        font-size: 1.6rem;
+        opacity: 0;
+        transition: opacity 0.28s ease;
+        margin-top: 0.6rem;
+    }
+
+    /* 按一下會加上 .is-open，保持 hover 文字可見 */
+    .grid-item.is-open .main-text {
+        opacity: 0;
+    }
+
+    .grid-item.is-open .hover-text {
+        opacity: 1;
+    }
+
+    /* 仍保留 :active / focus-within 支援 */
+    .grid-item:active .main-text,
+    .grid-item:focus-within .main-text {
+        opacity: 0;
+    }
+
+    .grid-item:active .hover-text,
+    .grid-item:focus-within .hover-text {
+        opacity: 1;
+    }
+}

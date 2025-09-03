@@ -1,10 +1,5 @@
 /* Header 背景與 Hero 同步 */
-.section-hero,
-.header {
-    background: linear-gradient(135deg, #08163a, #041030, #000820);
-    background-size: 400% 400%;
-    animation: gradient 20s ease infinite;
-}
+
 
 .header {
     position: relative;
@@ -33,9 +28,26 @@
 
 .main-nav-list a {
     font-size: 2.4rem;
-    color: white;
+    color: #e6e8eb;
     text-decoration: none;
+    transition: all 0.3s;
 }
+
+.main-nav-link:link,
+.main-nav-link:visited {
+    padding: 0.8rem 2.0rem;
+    border-radius: 0.9rem;
+    border: 5px solid #394561;
+}
+
+.main-nav-link:hover,
+.main-nav-link:active {
+    background-color: #525c75;
+    border: 5px solid #394561;
+}
+
+
+
 
 
 /* Header 粒子 */
@@ -60,6 +72,7 @@
     overflow: hidden;
     /* 確保圖片從外面進來時不會有捲軸 */
     color: white;
+
 }
 
 /* 新增 hero-content 容器來管理文字和圖片的 flex 佈局 */
@@ -127,8 +140,8 @@
 
 
     animation:
-        typing 3s steps(15) forwards,
-        move-left 2s 3s forwards,
+        typing 1.5s steps(15) forwards,
+        move-left 2s 1.5s forwards,
         cursor-blink 1s 5s infinite step-end;
 }
 
@@ -185,8 +198,8 @@
 
     /* 先滑入圖片，延遲0秒，持續2秒 */
     animation:
-        image-slide-in 2s 3s forwards,
-        border-glow 1s 5s forwards;
+        image-slide-in 2s 1.5s forwards,
+        border-glow 1s 3s forwards;
     /* 光暈延遲到滑入完成後 */
 }
 
@@ -228,4 +241,137 @@
             0 0 60px rgba(0, 200, 255, 0.4),
             0 0 90px rgba(255, 255, 0, 0.2);
     }
+}
+
+.section-introduction {
+    position: relative;
+    padding: 5.2rem;
+    border-radius: 6rem;
+    background-color: transparent;
+    /* 內部背景 */
+    z-index: 0;
+}
+
+.section-introduction::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 6px;
+    /* 邊框寬度 */
+    border-radius: 6rem;
+    background: linear-gradient(135deg, #ff6ec4, #7873f5, #4ade80);
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    z-index: -1;
+}
+
+
+.subheading {
+    line-height: 1.5;
+    font-size: 3.2rem;
+    font-weight: 500;
+    color: #b5b9c4;
+    text-transform: uppercase;
+}
+
+.heading-secondary {
+    font-size: 4.0rem;
+    font-weight: 600;
+    color: #e6e8eb;
+}
+
+.introduction-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    padding: 6rem 0;
+
+    /* 新增：置中所有項目 */
+    justify-items: center;
+    align-items: center;
+    /* 增加上下內邊距，讓版面更好看 */
+}
+
+.grid-item {
+    position: relative;
+    /* 關鍵：設為子元素的定位基準 */
+    width: 100%;
+    padding: 6rem 0;
+    /* 給定一個固定高度 */
+    background-color: #394561;
+    /* 設定背景色 */
+    border-radius: 1.5rem;
+    /* 圓角 */
+    display: flex;
+    /* 仍然使用 Flex 來置中 */
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    /* 滑鼠移上去時顯示為手形 */
+    overflow: hidden;
+    /* 確保內容不會溢出圓角外 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* 為 hover 效果增加過渡動畫 */
+    border: 5px solid transparent;
+
+
+}
+
+/* 2. 當滑鼠停在 Grid Item 上時的視覺效果 (可選，但建議) */
+.grid-item:hover {
+    border-color: #e6e8ebb4;
+    transform: translateY(-8px);
+    /* 向上移動一點 */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    /* 增加陰影 */
+}
+
+/* 3. 設定兩個文字 span 的共同樣式 */
+.grid-item .main-text,
+.grid-item .hover-text {
+    position: absolute;
+    /* 關鍵：讓文字可以重疊 */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* 精準置中 */
+    width: 90%;
+    /* 避免文字太長而貼邊 */
+    text-align: center;
+    transition: opacity 0.25s ease-in-out;
+    /* 關鍵：設定透明度變化的動畫 */
+}
+
+/* 4. 設定初始狀態：主要文字可見 */
+.grid-item .main-text {
+    font-size: 3.2rem;
+    font-weight: 600;
+    opacity: 1;
+    /* 完全可見 */
+}
+
+/* 5. 設定初始狀態：Hover 文字隱藏 */
+.grid-item .hover-text {
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #c7d2fe;
+    /* 給 hover 文字一個不同的顏色 */
+    opacity: 0;
+    /* 完全透明 (隱藏) */
+}
+
+/* 6. 設定 Hover 觸發後的狀態 */
+.grid-item:hover .main-text {
+    opacity: 0;
+    /* 主要文字變透明 */
+}
+
+.grid-item:hover .hover-text {
+    opacity: 1;
+    /* Hover 文字變可見 */
 }
