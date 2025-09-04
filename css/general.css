@@ -61,6 +61,8 @@ html {
 
     /* 10px / 16px = 0.625= 62.5% */
     font-size: 62.5%;
+
+    scroll-behavior: smooth;
 }
 
 body {
@@ -80,4 +82,8 @@ body {
     max-width: 180rem;
     padding: 0 3.2rem;
     margin: 0 auto;
+}
+
+.grid-span-2-col {
+    grid-column: span 2;
 }

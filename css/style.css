@@ -181,6 +181,9 @@
     }
 }
 
+
+
+
 /* Hero 圖片容器 */
 .hero-img {
     position: absolute;
@@ -322,7 +325,7 @@
 }
 
 /* 2. 當滑鼠停在 Grid Item 上時的視覺效果 (可選，但建議) */
-.grid-item:hover {
+.grid-item:hover:not(.grid-span-2-col) {
     border-color: #e6e8ebb4;
     transform: translateY(-8px);
     /* 向上移動一點 */
@@ -331,8 +334,8 @@
 }
 
 /* 3. 設定兩個文字 span 的共同樣式 */
-.grid-item .main-text,
-.grid-item .hover-text {
+.grid-item:not(.grid-span-2-col) .main-text,
+.grid-item:not(.grid-span-2-col) .hover-text {
     position: absolute;
     /* 關鍵：讓文字可以重疊 */
     top: 50%;
@@ -347,7 +350,7 @@
 }
 
 /* 4. 設定初始狀態：主要文字可見 */
-.grid-item .main-text {
+.grid-item:not(.grid-span-2-col) .main-text {
     font-size: 3.2rem;
     font-weight: 600;
     opacity: 1;
@@ -355,7 +358,7 @@
 }
 
 /* 5. 設定初始狀態：Hover 文字隱藏 */
-.grid-item .hover-text {
+.grid-item:not(.grid-span-2-col) .hover-text {
     font-size: 2rem;
     font-weight: 400;
     line-height: 1.6;
@@ -366,12 +369,26 @@
 }
 
 /* 6. 設定 Hover 觸發後的狀態 */
-.grid-item:hover .main-text {
+.grid-item:hover:not(.grid-span-2-col) .main-text {
     opacity: 0;
     /* 主要文字變透明 */
 }
 
-.grid-item:hover .hover-text {
+.grid-item:hover:not(.grid-span-2-col) .hover-text {
     opacity: 1;
     /* Hover 文字變可見 */
+}
+
+.grid-span-2-col {
+    border-color: #e6e8ebb4;
+}
+
+.grid-span-2-col .hover-text {
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #c7d2fe;
+    padding: 1.6rem 3.2rem;
+
+    /* 給 hover 文字一個不同的顏色 */
 }
