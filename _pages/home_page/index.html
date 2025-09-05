@@ -17,11 +17,19 @@ permalink: /
       rel="stylesheet"
     />
 
-<link rel="stylesheet" href="{{ 'assets/css/home_page/general.css' | relative_url }}">
-<link rel="stylesheet" href="{{ 'assets/css/home_page/style.css' | relative_url }}">
-<link rel="stylesheet" href="{{ 'assets/css/home_page/query.css' | relative_url }}">
-<script src="{{ 'assets/js/home_page/media.js' | relative_url }}"></script>
-
+    <link
+      rel="stylesheet"
+      href="{{ 'assets/css/home_page/general.css' | relative_url }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ 'assets/css/home_page/style.css' | relative_url }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ 'assets/css/home_page/query.css' | relative_url }}"
+    />
+    <script src="{{ 'assets/js/home_page/media.js' | relative_url }}"></script>
 
     <title>Deveraph</title>
   </head>
@@ -32,7 +40,11 @@ permalink: /
         <nav class="main-nav">
           <ul class="main-nav-list">
             <li><a class="main-nav-link" href="#introduction">About</a></li>
-            <li><a class="main-nav-link" href="{{ '/blog/' | relative_url }}">Blog</a></li>
+            <li>
+              <a class="main-nav-link" href="{{ '/blog/' | relative_url }}"
+                >Blog</a
+              >
+            </li>
           </ul>
         </nav>
         <div
@@ -52,7 +64,10 @@ permalink: /
         <div class="hero-content">
           <h1 class="hero-text-box">Always in Dev_</h1>
           <div class="hero-img">
-            <img src="{{ '/assets/images/home_page/hero-img.png' | relative_url }}" alt="Coding image" />
+            <img
+              src="{{ '/assets/images/home_page/hero-img.png' | relative_url }}"
+              alt="Coding image"
+            />
           </div>
         </div>
         <div
@@ -78,7 +93,7 @@ permalink: /
       </section>
 
       <section class="section-introduction container" id="introduction">
-        <div">
+        <div>
           <div>
             <span class="subheading">Hello!</span>
             <h2 class="heading-secondary">Something About Me</h2>
@@ -96,12 +111,18 @@ permalink: /
               <span class="main-text">Other</span>
               <span class="hover-text">More info here...</span>
             </div>
-            <div class="grid-item"><span class="main-text">Other</span>
-              <span class="hover-text">More info here...</span></div>
-            <div class="grid-item"><span class="main-text">Other</span>
-              <span class="hover-text">More info here...</span></div>
-            <div class="grid-item"><span class="main-text">Other</span>
-              <span class="hover-text">More info here...</span></div>
+            <div class="grid-item">
+              <span class="main-text">Other</span>
+              <span class="hover-text">More info here...</span>
+            </div>
+            <div class="grid-item">
+              <span class="main-text">Other</span>
+              <span class="hover-text">More info here...</span>
+            </div>
+            <div class="grid-item">
+              <span class="main-text">Other</span>
+              <span class="hover-text">More info here...</span>
+            </div>
           </div>
         </div>
       </section>
