@@ -142,7 +142,7 @@
     animation:
         typing 1.5s steps(15) forwards,
         move-left 2s 1.5s forwards,
-        cursor-blink 1s 5s infinite step-end;
+        cursor-blink 1s 3.5s infinite step-end;
 }
 
 @keyframes typing {
@@ -165,7 +165,7 @@
 
     to {
         /* 將 -20vw 改為更大的負數，例如 -35vw */
-        transform: translateX(-25vw);
+        transform: translateX(-27vw);
     }
 }
 
@@ -202,7 +202,7 @@
     /* 先滑入圖片，延遲0秒，持續2秒 */
     animation:
         image-slide-in 2s 1.5s forwards,
-        border-glow 1s 3s forwards;
+        border-glow 1s 3.5s forwards;
     /* 光暈延遲到滑入完成後 */
 }
 
@@ -240,9 +240,9 @@
 
     to {
         border-color: #fff0;
-        box-shadow: 0 0 30px rgba(255, 0, 150, 0.6),
-            0 0 60px rgba(0, 200, 255, 0.4),
-            0 0 90px rgba(255, 255, 0, 0.2);
+        box-shadow: 0 0 3rem rgba(255, 0, 150, 0.6),
+            0 0 6rem rgba(0, 200, 255, 0.4),
+            0 0 9rem rgba(255, 255, 0, 0.2);
     }
 }
 
