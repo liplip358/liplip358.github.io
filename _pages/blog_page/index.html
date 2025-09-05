@@ -9,21 +9,18 @@ pagination:
 ---
 
 <!-- 
-  V2 版本說明：
-  這個版本重構了部落格首頁的邏輯，使其更清晰且符合使用者預期。
-  1. 簡化邏輯：第一頁的「All Stories」現在會顯示當頁的所有文章，而不是被精選文章過濾後的剩餘文章。
-  2. 結構清晰：「All Stories」區塊現在對所有分頁都使用相同的程式碼，不再需要 if/else 判斷。
-  3. 優化分頁：更新了分頁連結的語法，使其更標準化。
+  V4 版本說明：
+  1. 精選文章一致性：精選文章區塊顯示全站最新 4 篇文章（site.posts | slice: 0, 4），與第一頁一致，無論當前分頁為何。
+  2. 置頂文章：顯示所有標有 "sticky" 標籤的文章，適用於所有分頁。
+  3. 分頁修復：使用明確的 URL 結構（/blog/2/ 等）解決 404 錯誤。
+  4. 結構清晰：所有分頁顯示相同的 Sticky 和 Featured 區塊，All Stories 顯示當前頁文章。
 -->
 
 <div class="container">
-  {% if paginator.page == 1 %}
   <!-- =================================================
-  第一頁特殊佈局：顯示置頂和精選文章
+  Sticky 文章 (置頂)
   ================================================= -->
-
-  <!-- Sticky 文章 (置頂) -->
-  {% for post in paginator.posts %} {% if post.tags contains "sticky" %}
+  {% for post in site.posts %} {% if post.tags contains "sticky" %}
   <div
     class="jumbotron jumbotron-fluid jumbotron-home pt-0 pb-0 mt-3 mb-2rem bg-lightblue position-relative"
   >
@@ -47,8 +44,10 @@ pagination:
   </div>
   {% endif %} {% endfor %}
 
-  <!-- 精選文章 (取第一頁的前 4 篇) -->
-  {% assign featured_posts = paginator.posts | slice: 0, 4 %} {% if
+  <!-- =================================================
+  精選文章 (顯示全站最新 4 篇，與第一頁一致)
+  ================================================= -->
+  {% assign featured_posts = site.posts | slice: 0, 4 %} {% if
   featured_posts.size > 0 %}
   <div class="row remove-site-content-margin">
     <!-- 第一篇 (大圖) -->
@@ -131,8 +130,7 @@ pagination:
       {% endfor %}
     </div>
   </div>
-  {% endif %} {% endif %}
-  <!-- end if paginator.page == 1 -->
+  {% endif %}
 
   <!-- =================================================
   所有文章列表 (適用於所有分頁)
