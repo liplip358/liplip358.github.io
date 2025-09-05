@@ -1,0 +1,203 @@
+---
+layout: default
+title: Blog
+permalink: /blog/
+pagination:
+  enabled: true
+  per_page: 5
+  permalink: /:num/
+---
+
+<!-- 
+  V2 版本說明：
+  這個版本重構了部落格首頁的邏輯，使其更清晰且符合使用者預期。
+  1. 簡化邏輯：第一頁的「All Stories」現在會顯示當頁的所有文章，而不是被精選文章過濾後的剩餘文章。
+  2. 結構清晰：「All Stories」區塊現在對所有分頁都使用相同的程式碼，不再需要 if/else 判斷。
+  3. 優化分頁：更新了分頁連結的語法，使其更標準化。
+-->
+
+<div class="container">
+  {% if paginator.page == 1 %}
+  <!-- =================================================
+  第一頁特殊佈局：顯示置頂和精選文章
+  ================================================= -->
+
+  <!-- Sticky 文章 (置頂) -->
+  {% for post in paginator.posts %} {% if post.tags contains "sticky" %}
+  <div
+    class="jumbotron jumbotron-fluid jumbotron-home pt-0 pb-0 mt-3 mb-2rem bg-lightblue position-relative"
+  >
+    <div class="pl-4 pr-0 h-100 tofront">
+      <div class="row justify-content-between">
+        <div class="col-md-6 pt-6 pb-6 pr-lg-4 align-self-center">
+          <h1 class="mb-3">{{ post.title }}</h1>
+          <p class="mb-3 lead">
+            {{ post.excerpt | strip_html | strip_newlines | truncate: 136 }}
+          </p>
+          <a href="{{ post.url | relative_url }}" class="btn btn-dark"
+            >Read More</a
+          >
+        </div>
+        <div
+          class="col-md-6 d-none d-md-block pr-0"
+          style="background-size:cover;background-image:url('{{ post.image | relative_url }}');"
+        ></div>
+      </div>
+    </div>
+  </div>
+  {% endif %} {% endfor %}
+
+  <!-- 精選文章 (取第一頁的前 4 篇) -->
+  {% assign featured_posts = paginator.posts | slice: 0, 4 %} {% if
+  featured_posts.size > 0 %}
+  <div class="row remove-site-content-margin">
+    <!-- 第一篇 (大圖) -->
+    {% assign latest_post = featured_posts[0] %}
+    <div class="col-md-6">
+      <div class="card border-0 mb-4 box-shadow">
+        <a href="{{ latest_post.url | relative_url }}">
+          {% if latest_post.image %}
+          <img
+            class="w-100"
+            src="{{ latest_post.image | relative_url }}"
+            alt="{{ latest_post.title }}"
+          />
+          {% endif %}
+        </a>
+        <div class="card-body px-0 pb-0 d-flex flex-column align-items-start">
+          <h2 class="h4 font-weight-bold">
+            <a href="{{ latest_post.url | relative_url }}" class="text-dark"
+              >{{ latest_post.title }}</a
+            >
+          </h2>
+          <p class="excerpt">
+            {{ latest_post.excerpt | strip_html | strip_newlines | truncate: 136
+            }}
+          </p>
+          <div>
+            <small class="d-block text-muted">
+              In
+              <span class="catlist">
+                {% for category in latest_post.categories %}
+                <a
+                  class="text-capitalize text-muted smoothscroll"
+                  href="{{ '/categories.html' | relative_url }}#{{ category | downcase }}"
+                  >{{ category }}</a
+                >{% unless forloop.last %}, {% endunless %} {% endfor %}
+              </span>
+            </small>
+            <small class="text-muted"
+              >{{ latest_post.date | date: '%b %d, %Y' }}</small
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 第二到第四篇 (小列表) -->
+    <div class="col-md-6">
+      {% for post in featured_posts offset:1 %}
+      <div class="mb-3 d-flex align-items-center">
+        {% if post.image %}
+        <div class="col-md-4">
+          <a href="{{ post.url | relative_url }}"
+            ><img
+              class="w-100"
+              src="{{ post.image | relative_url }}"
+              alt="{{ post.title }}"
+          /></a>
+        </div>
+        {% endif %}
+        <div>
+          <h2 class="mb-2 h6 font-weight-bold">
+            <a href="{{ post.url | relative_url }}" class="text-dark"
+              >{{ post.title }}</a
+            >
+          </h2>
+          <small class="d-block text-muted">
+            In
+            <span class="catlist">
+              {% for category in post.categories %}
+              <a
+                class="text-capitalize text-muted smoothscroll"
+                href="{{ '/categories.html' | relative_url }}#{{ category | downcase }}"
+                >{{ category }}</a
+              >{% unless forloop.last %}, {% endunless %} {% endfor %}
+            </span>
+          </small>
+          <small class="text-muted">{{ post.date | date: '%b %d, %Y' }}</small>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %} {% endif %}
+  <!-- end if paginator.page == 1 -->
+
+  <!-- =================================================
+  所有文章列表 (適用於所有分頁)
+  ================================================= -->
+  <div class="row mt-3">
+    <div class="col-md-8 main-loop">
+      <h4 class="font-weight-bold spanborder"><span>All Stories</span></h4>
+
+      {% for post in paginator.posts %} {% include main-loop-card.html %} {%
+      endfor %}
+
+      <!-- 分頁 -->
+      <div class="mt-5">
+        {% if paginator.total_pages > 1 %}
+        <ul class="pagination">
+          <!-- 上一頁按鈕 -->
+          {% if paginator.previous_page %}
+          <li class="page-item">
+            <a
+              class="page-link"
+              href="{{ paginator.previous_page_path | relative_url }}"
+              >&laquo; Prev</a
+            >
+          </li>
+          {% else %}
+          <li class="page-item disabled">
+            <span class="prev page-link">&laquo;</span>
+          </li>
+          {% endif %}
+
+          <!-- 頁碼 -->
+          {% for page in (1..paginator.total_pages) %} {% if page ==
+          paginator.page %}
+          <li class="page-item active">
+            <span class="page-link">{{ page }}</span>
+          </li>
+          {% else %}
+          <li class="page-item">
+            <a
+              class="page-link"
+              href="{{ site.baseurl }}/blog/{% if page == 1 %}{% else %}{{ page }}/{% endif %}"
+              >{{ page }}</a
+            >
+          </li>
+          {% endif %} {% endfor %}
+
+          <!-- 下一頁按鈕 -->
+          {% if paginator.next_page %}
+          <li class="page-item">
+            <a
+              class="page-link"
+              href="{{ paginator.next_page_path | relative_url }}"
+              >Next &raquo;</a
+            >
+          </li>
+          {% else %}
+          <li class="page-item disabled">
+            <span class="next page-link">&raquo;</span>
+          </li>
+          {% endif %}
+        </ul>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="col-md-4">{% include sidebar-featured.html %}</div>
+  </div>
+</div>
