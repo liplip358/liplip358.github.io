@@ -1,0 +1,110 @@
+---
+layout: none
+title: Home
+permalink: /
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Pixelify+Sans:wght@400..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+
+<link rel="stylesheet" href="{{ 'assets/css/home_page/general.css' | relative_url }}">
+<link rel="stylesheet" href="{{ 'assets/css/home_page/style.css' | relative_url }}">
+<link rel="stylesheet" href="{{ 'assets/css/home_page/query.css' | relative_url }}">
+<script src="{{ 'assets/js/home_page/media.js' | relative_url }}"></script>
+
+
+    <title>Deveraph</title>
+  </head>
+  <body>
+    <main>
+      <header class="header">
+        <a href="#" class="logo">Deveraph</a>
+        <nav class="main-nav">
+          <ul class="main-nav-list">
+            <li><a class="main-nav-link" href="#introduction">About</a></li>
+            <li><a class="main-nav-link" href="{{ '/blog/' | relative_url }}">Blog</a></li>
+          </ul>
+        </nav>
+        <div
+          class="particle"
+          style="top: 10%; left: 20%; animation-delay: 0s"
+        ></div>
+        <div
+          class="particle"
+          style="top: 50%; left: 70%; animation-delay: 3s"
+        ></div>
+        <div
+          class="particle"
+          style="top: 30%; left: 50%; animation-delay: 5s"
+        ></div>
+      </header>
+      <section class="section-hero">
+        <div class="hero-content">
+          <h1 class="hero-text-box">Always in Dev_</h1>
+          <div class="hero-img">
+            <img src="{{ '/assets/images/home_page/hero-img.png' | relative_url }}" alt="Coding image" />
+          </div>
+        </div>
+        <div
+          class="particle"
+          style="top: 10%; left: 20%; animation-delay: 0s"
+        ></div>
+        <div
+          class="particle"
+          style="top: 70%; left: 50%; animation-delay: 1s"
+        ></div>
+        <div
+          class="particle"
+          style="top: 30%; left: 80%; animation-delay: 2s"
+        ></div>
+        <div
+          class="particle"
+          style="top: 50%; left: 10%; animation-delay: 3s"
+        ></div>
+        <div
+          class="particle"
+          style="top: 80%; left: 70%; animation-delay: 4s"
+        ></div>
+      </section>
+
+      <section class="section-introduction container" id="introduction">
+        <div">
+          <div>
+            <span class="subheading">Hello!</span>
+            <h2 class="heading-secondary">Something About Me</h2>
+          </div>
+          <div class="introduction-grid">
+            <div class="grid-item">
+              <span class="main-text">Where I live</span>
+              <span class="hover-text">I live in Taipei, Taiwan.</span>
+            </div>
+            <div class="grid-item">
+              <span class="main-text">My Hobbies?</span>
+              <span class="hover-text">I love coding, music, and hiking.</span>
+            </div>
+            <div class="grid-item">
+              <span class="main-text">Other</span>
+              <span class="hover-text">More info here...</span>
+            </div>
+            <div class="grid-item"><span class="main-text">Other</span>
+              <span class="hover-text">More info here...</span></div>
+            <div class="grid-item"><span class="main-text">Other</span>
+              <span class="hover-text">More info here...</span></div>
+            <div class="grid-item"><span class="main-text">Other</span>
+              <span class="hover-text">More info here...</span></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
