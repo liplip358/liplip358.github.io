@@ -45,31 +45,29 @@ pagination:
   {% endif %} {% endfor %}
 
   <!-- =================================================
-  精選文章 (顯示 important 最新 4 篇，與第一頁一致)
+  精選文章 (顯示全站最新 4 篇，與第一頁一致)
   ================================================= -->
-  {% comment %} 精選文章區 (只顯示 important: true 的文章，最多 4 篇) {%
-  endcomment %} {% assign featured_posts = site.posts | where: "important", true
-  | slice: 0, 4 %} {% if featured_posts.size > 0 %}
+  {% assign featured_posts = site.posts | slice: 0, 4 %} {% if
+  featured_posts.size > 0 %}
   <div class="row remove-site-content-margin">
     <!-- 第一篇 (大圖) -->
     {% assign latest_post = featured_posts[0] %}
     <div class="col-md-6">
-      <div class="card border-0 mb-4 box-shadow featured-card">
+      <div class="card border-0 mb-4 box-shadow">
         <a href="{{ latest_post.url | relative_url }}">
           {% if latest_post.image %}
           <img
             class="w-100"
             src="{{ latest_post.image | relative_url }}"
             alt="{{ latest_post.title }}"
-            loading="lazy"
           />
           {% endif %}
         </a>
         <div class="card-body px-0 pb-0 d-flex flex-column align-items-start">
           <h2 class="h4 font-weight-bold">
-            <a href="{{ latest_post.url | relative_url }}" class="text-dark">
-              {{ latest_post.title }}
-            </a>
+            <a href="{{ latest_post.url | relative_url }}" class="text-dark"
+              >{{ latest_post.title }}</a
+            >
           </h2>
           <p class="excerpt">
             {{ latest_post.excerpt | strip_html | strip_newlines | truncate: 136
@@ -98,17 +96,15 @@ pagination:
     <!-- 第二到第四篇 (小列表) -->
     <div class="col-md-6 two-to-four">
       {% for post in featured_posts offset:1 %}
-      <div class="mb-3 d-flex align-items-center featured-card">
+      <div class="mb-3 d-flex align-items-center">
         {% if post.image %}
         <div class="col-md-4">
-          <a href="{{ post.url | relative_url }}">
-            <img
+          <a href="{{ post.url | relative_url }}"
+            ><img
               class="w-100"
               src="{{ post.image | relative_url }}"
               alt="{{ post.title }}"
-              loading="lazy"
-            />
-          </a>
+          /></a>
         </div>
         {% endif %}
         <div>

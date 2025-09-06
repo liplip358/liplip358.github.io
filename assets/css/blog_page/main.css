@@ -13051,3 +13051,7 @@ body.dark-mode .modal-title {
 .button-bar {
   flex-wrap: nowrap;
 }
+
+body.dark-mode .btn-follow {
+  color: #f0f0f0 !important;
+}
