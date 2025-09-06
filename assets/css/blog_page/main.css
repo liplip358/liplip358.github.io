@@ -10825,6 +10825,10 @@ a.text-warning:focus {
 
 .text-danger {
   color: #ea2f65 !important;
+}
+
+.text-danger-tag {
+  color: #ea2f65 !important;
   padding-left: 1rem;
 }
 
@@ -13042,4 +13046,8 @@ html {
 
 body.dark-mode .modal-title {
   color: #333;
+}
+
+.button-bar {
+  flex-wrap: nowrap;
 }

@@ -18,7 +18,7 @@ layout: default
             <span class="catlist">
               {% for category in page.categories %}
               <a
-                class="sscroll text-danger"
+                class="sscroll text-danger-tag"
                 href="{{site.baseurl}}/blog/categories.html#{{ category | downcase }}"
                 >{{ category | downcase }}</a
               ><span class="sep">, </span>
@@ -179,7 +179,7 @@ layout: default
 <!-- Aletbar Prev/Next -->
 <div class="alertbar">
   <div class="container">
-    <div class="row prevnextlinks small font-weight-bold">
+    <div class="row prevnextlinks small font-weight-bold button-bar">
       {% if page.previous.url %}
       <div class="col-md-6 rightborder pl-0">
         <a class="text-dark" href="{{ site.baseurl }}{{ page.previous.url }}"
