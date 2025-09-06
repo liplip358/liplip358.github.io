@@ -112,6 +112,107 @@ a.text-dark:hover {
 	position: relative;
 }
 
+.bright-and-dark-mode-btn {
+	position: fixed;
+	bottom: 5rem;
+	right: 5rem;
+	z-index: 1500;
+	background-color: #03a87c;
+	color: white;
+	border: none;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	transition: background 0.3s, color 0.3s;
+}
+
+body.dark-mode .bright-and-dark-mode-btn {
+	background: #333;
+	/* 深灰 */
+	color: #eee;
+	/* 淺色文字 */
+}
+
+/* 暗色模式 */
+body.dark-mode {
+	background: #08163a;
+	color: #efefef;
+}
+
+body.dark-mode .jumbotron {
+	background-color: #212d4e
+}
+
+body.dark-mode .card {
+	background-color: #212d4e;
+}
+
+body.dark-mode .text-dark {
+	color: #efefef;
+}
+
+body.dark-mode .excerpt {
+	color: #eee;
+}
+
+body.dark-mode .text-muted {
+	color: #ddd;
+}
+
+body.dark-mode .spanborder span {
+	border-bottom: 1px solid #e8f3ec;
+}
+
+body.dark-mode .navbar {
+	background-color: #212d4e;
+}
+
+body.dark-mode .navbar-light .navbar-brand {
+	color: #efefef;
+}
+
+body.dark-mode .navbar-light .navbar-nav .nav-link {
+	color: #ddd;
+}
+
+body.dark-mode .btn {
+	background-color: #03a87c;
+}
+
+body.dark-mode footer.bg-white {
+	background-color: #1a243e;
+}
+
+body.dark-mode footer.border-top {
+	border-top: 1px solid #1a243e;
+}
+
+@media(max-width:1200px) {
+	.bright-and-dark-mode-btn {
+		bottom: 4rem;
+		right: 4rem;
+	}
+}
+
+@media(max-width:992px) {
+	.bright-and-dark-mode-btn {
+		bottom: 3rem;
+		right: 3rem;
+	}
+}
+
+@media(max-width:768px) {
+	.bright-and-dark-mode-btn {
+		bottom: 2rem;
+		right: 2rem;
+	}
+}
+
 .btn:hover,
 .btn:focus {
 	outline: 0 !important;
@@ -495,6 +596,9 @@ a.text-dark:hover {
 	fill: #e8f3ec !important;
 }
 
+
+
+
 .card .date {
 	position: absolute;
 	top: 20px;
@@ -798,14 +902,14 @@ ol.list-featured li {
 	font-size: 0.8rem;
 }
 
-ol.list-featured li:before {
+ol.list-featured li::before {
 	content: "0" counter(my-awesome-counter);
 	font-weight: bold;
 	font-size: 2rem;
 	margin-right: 0.5rem;
 	font-family: Arial;
 	line-height: 1;
-	opacity: .1;
+	opacity: .25;
 }
 
 .catlist .sep:last-child {
@@ -843,6 +947,11 @@ article {
 	font-weight: 400;
 	line-height: 1.15;
 	color: #222222;
+	padding-left: 1rem;
+}
+
+body.dark-mode .article-headline {
+	color: #efefef;
 }
 
 article p,
@@ -908,6 +1017,10 @@ article .h6 {
 	padding: 20px 0;
 	z-index: 1021;
 	display: none;
+}
+
+body.dark-mode .alertbar {
+	background-color: #06122e;
 }
 
 .alertbar img {

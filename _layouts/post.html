@@ -37,14 +37,14 @@ layout: default
             {% endif %}
             <small class="ml-3">
               {{ author.name }}
-              <span
+              <!-- <span
                 ><a
                   target="_blank"
                   href="{{ author.twitter }}"
                   class="btn btn-outline-success btn-sm btn-round ml-1"
                   >Follow</a
                 ></span
-              >
+              > -->
               <span class="text-muted d-block mt-1"
                 >{{ page.date | date: '%b %d, %Y' }} · {% include
                 meta-read-time.html %}</span
@@ -155,7 +155,7 @@ layout: default
           />
           {% endif %}
         </div>
-        <div class="col-md-10">
+        <!-- <div class="col-md-10">
           <h5 class="font-weight-bold">
             Written by {{ author.name }} {% if author.twitter %}<span
               ><a
@@ -167,7 +167,7 @@ layout: default
             >{% endif %}
           </h5>
           {{ author.bio }}
-        </div>
+        </div> -->
       </div>
       {% endif %}
 
