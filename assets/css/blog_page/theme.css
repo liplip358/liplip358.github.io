@@ -131,12 +131,7 @@ a.text-dark:hover {
 	transition: background 0.3s, color 0.3s;
 }
 
-body.dark-mode .bright-and-dark-mode-btn {
-	background: #333;
-	/* 深灰 */
-	color: #eee;
-	/* 淺色文字 */
-}
+
 
 /* 暗色模式 */
 body.dark-mode {
@@ -182,6 +177,13 @@ body.dark-mode .navbar-light .navbar-nav .nav-link {
 
 body.dark-mode .btn {
 	background-color: #03a87c;
+}
+
+body.dark-mode .bright-and-dark-mode-btn {
+	background: #333;
+	/* 深灰 */
+	color: #eee;
+	/* 淺色文字 */
 }
 
 body.dark-mode footer.bg-white {
@@ -425,6 +427,10 @@ body.dark-mode footer.border-top {
 
 .navbar-light .navbar-toggler-icon {
 	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0,0,0,0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+body.dark-mode .navbar-light .navbar-toggler-icon {
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
 }
 
 .navbar-light .navbar-text {

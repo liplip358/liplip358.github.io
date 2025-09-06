@@ -29,7 +29,6 @@ permalink: /
       rel="stylesheet"
       href="{{ 'assets/css/home_page/query.css' | relative_url }}"
     />
-    <script src="{{ 'assets/js/home_page/media.js' | relative_url }}"></script>
 
     <title>Deveraph</title>
   </head>
@@ -38,7 +37,11 @@ permalink: /
       <header class="header">
         <a href="#" class="logo">Deveraph</a>
         <nav class="main-nav">
-          <ul class="main-nav-list">
+          <!-- 漢堡 -->
+          <div class="nav-toggle" id="nav-toggle">&#9776;</div>
+
+          <!-- 選單 -->
+          <ul class="main-nav-list" id="main-nav-list">
             <li><a class="main-nav-link" href="#introduction">About</a></li>
             <li>
               <a class="main-nav-link" href="{{ '/blog/' | relative_url }}"
@@ -47,6 +50,7 @@ permalink: /
             </li>
           </ul>
         </nav>
+        <script src="{{ 'assets/js/home_page/ham.js' | relative_url }}"></script>
         <div
           class="particle"
           style="top: 10%; left: 20%; animation-delay: 0s"
@@ -127,5 +131,6 @@ permalink: /
         </div>
       </section>
     </main>
+    <script src="{{ 'assets/js/home_page/media.js' | relative_url }}"></script>
   </body>
 </html>

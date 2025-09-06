@@ -46,8 +46,9 @@
     border: 5px solid #394561;
 }
 
-
-
+.nav-toggle {
+    display: none;
+}
 
 
 /* Header 粒子 */

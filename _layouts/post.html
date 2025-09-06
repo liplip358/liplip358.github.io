@@ -19,7 +19,7 @@ layout: default
               {% for category in page.categories %}
               <a
                 class="sscroll text-danger"
-                href="{{site.baseurl}}/categories.html#{{ category | downcase }}"
+                href="{{site.baseurl}}/blog/categories.html#{{ category | downcase }}"
                 >{{ category | downcase }}</a
               ><span class="sep">, </span>
               {% endfor %}
@@ -92,7 +92,6 @@ layout: default
         <span class="taglist">
           {% for tag in page.tags %}
           <a class="sscroll text-danger" href="{{ '/categories.html' | relative_url }}#{{ category | downcase }}">
-          >
           {% endfor %}
         </span>
       </div>

@@ -1,30 +1,38 @@
-const darkBtn = document.getElementById("dark-mode");
-const body = document.body;
+// 自執行函式，避免污染全域
+(function () {
+  const body = document.body;
 
-// 預設暗色模式
-if (!localStorage.getItem("theme")) {
-  body.classList.add("dark-mode");
-  localStorage.setItem("theme", "dark");
-  console.log("No theme found. Setting default to dark mode.");
-} else if (localStorage.getItem("theme") === "dark") {
-  body.classList.add("dark-mode");
-  console.log("Theme in localStorage is dark. Applying dark mode.");
-} else {
-  console.log("Theme in localStorage is light. Applying light mode.");
-}
-
-// 頁面載入時輸出當前模式
-console.log("Page loaded. Current theme:", localStorage.getItem("theme"));
-
-// 點按鈕切換模式
-darkBtn.addEventListener("click", () => {
-  body.classList.toggle("dark-mode");
-  if (body.classList.contains("dark-mode")) {
-    localStorage.setItem("theme", "dark");
-    console.log("Dark mode enabled. Updated localStorage.");
+  // 1️⃣ 頁面一開始先套用使用者上次選擇的模式，避免閃白
+  const savedTheme = localStorage.getItem("theme");
+  if (!savedTheme || savedTheme === "dark") {
+    body.classList.add("dark-mode");
+    if (!savedTheme) localStorage.setItem("theme", "dark");
+    console.log("Applying dark mode.");
   } else {
-    localStorage.setItem("theme", "light");
-    console.log("Light mode enabled. Updated localStorage.");
+    body.classList.remove("dark-mode");
+    console.log("Applying light mode.");
   }
-  console.log("Current theme in localStorage:", localStorage.getItem("theme"));
-});
+
+  console.log("Page loaded. Current theme:", localStorage.getItem("theme"));
+
+  // 2️⃣ 設定切換按鈕功能
+  const darkBtn = document.getElementById("dark-mode");
+  if (darkBtn) {
+    darkBtn.addEventListener("click", () => {
+      body.classList.toggle("dark-mode");
+
+      if (body.classList.contains("dark-mode")) {
+        localStorage.setItem("theme", "dark");
+        console.log("Dark mode enabled. Updated localStorage.");
+      } else {
+        localStorage.setItem("theme", "light");
+        console.log("Light mode enabled. Updated localStorage.");
+      }
+
+      console.log(
+        "Current theme in localStorage:",
+        localStorage.getItem("theme")
+      );
+    });
+  }
+})();

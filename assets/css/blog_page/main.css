@@ -13039,3 +13039,7 @@ html {
 .card-body.px-0.pb-0.d-flex.flex-column.align-items-start {
   margin: 0 0.8rem;
 }
+
+body.dark-mode .modal-title {
+  color: #333;
+}

@@ -1,65 +1,200 @@
 /* ---------- Mobile / persistent touch toggle for introduction grid ---------- */
-@media (max-width: 768px) {
-    .introduction-grid {
-        grid-template-columns: 1fr;
-        gap: 1.2rem;
-        padding: 3rem 1.6rem;
-        justify-items: stretch;
-        align-items: stretch;
+
+@media(max-width: 112.5em) {
+    .hero-text-box {
+        font-size: 5.4rem;
     }
 
-    .grid-item {
-        width: 100%;
-        padding: 2.4rem 1.6rem;
-        border-radius: 1rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        -webkit-tap-highlight-color: transparent;
-        touch-action: manipulation;
+    .hero-img {
+        right: 12rem;
+    }
+}
+
+@media(max-width: 93.75em) {
+    .hero-text-box {
+        font-size: 4.4rem;
     }
 
-    /* 將重疊文字改為流內排列，方便點擊與可存續顯示 */
-    .grid-item .main-text,
-    .grid-item .hover-text {
-        position: relative;
-        top: auto;
-        left: auto;
-        transform: none;
-        width: 100%;
-        text-align: center;
-        margin: 0;
+    .hero-img {
+        right: 8rem;
+    }
+}
+
+@media(max-width: 75em) {
+    .hero-text-box {
+        font-size: 3.4rem;
     }
 
-    .grid-item .main-text {
-        font-size: 2.4rem;
-        opacity: 1;
+    .hero-img {
+        right: 8rem;
+    }
+}
+
+/* Responsive Design for max-width: 60em (Updated) */
+@media (max-width: 60em) {
+    .subheading {
+        font-size: 2.8rem;
     }
 
-    .grid-item .hover-text {
+    .heading-secondary {
+        font-size: 3.6rem;
+    }
+
+    .hover-text {
         font-size: 1.6rem;
-        opacity: 0;
-        transition: opacity 0.28s ease;
-        margin-top: 0.6rem;
     }
 
-    /* 按一下會加上 .is-open，保持 hover 文字可見 */
-    .grid-item.is-open .main-text {
-        opacity: 0;
+    .hero-text-box {
+        border-right: 3px solid #eee;
+        font-size: 4.8rem;
+        top: -19rem;
+        /* Removed large negative top value, rely on flex centering */
+        max-width: 15ch;
+        /* Increased to 15ch to include space after underscore */
+        animation:
+            typing 1.5s steps(15) forwards,
+            /* Increased steps to 15 for space and cursor */
+            move-up 2s 1.5s forwards,
+            cursor-blink 1s 3.5s infinite step-end;
+        /* Ensure initial position is centered */
+        transform: translateY(0);
+        /* Start centered */
     }
 
-    .grid-item.is-open .hover-text {
-        opacity: 1;
+    @keyframes typing {
+        from {
+            width: 0ch;
+            border-color: #eee;
+        }
+
+        to {
+            width: 15ch;
+            /* Matches max-width, ensuring space after underscore */
+            border-color: #eee;
+        }
     }
 
-    /* 仍保留 :active / focus-within 支援 */
-    .grid-item:active .main-text,
-    .grid-item:focus-within .main-text {
-        opacity: 0;
+    @keyframes move-up {
+        from {
+            transform: translateY(0);
+            /* Start centered */
+        }
+
+        to {
+            transform: translateY(-15vh);
+            /* Move up to desired height */
+        }
     }
 
-    .grid-item:active .hover-text,
-    .grid-item:focus-within .hover-text {
-        opacity: 1;
+    .hero-img {
+        right: auto;
+        left: 50%;
+        width: 60vw;
+        animation:
+            image-slide-to-center 2s 1.5s forwards,
+            border-glow 1s 3.5s forwards;
+    }
+
+    @keyframes image-slide-to-center {
+        from {
+            transform: translateY(-50%) translateX(100%);
+            opacity: 0;
+        }
+
+        to {
+            transform: translate(-50%, -50%);
+            opacity: 1;
+        }
+    }
+
+    .introduction-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@media(max-width: 52.5em) {
+    .hero-text-box {
+        top: -20rem;
+        font-size: 5.8rem;
+    }
+
+    html {
+        font-size: 50%;
+    }
+
+}
+
+@media(max-width: 40em) {
+    .hero-text-box {
+        top: -15rem;
+        font-size: 4.8rem;
+    }
+
+
+
+
+}
+
+/* 小於 600px 時 */
+@media (max-width: 37.5em) {
+
+    html {
+        font-size: 37.5%;
+    }
+
+    .header {
+        overflow: visible !important;
+    }
+
+    .hero-text-box {
+        z-index: 0;
+        font-size: 4.8rem
+    }
+
+
+    .nav-toggle {
+        display: block;
+        font-size: 2.4rem;
+        cursor: pointer;
+        padding: 1.2rem;
+        z-index: 10;
+    }
+
+    .main-nav-list {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background-color: #394561;
+        padding: 1.6rem 0;
+        border-radius: 0 0 0.9rem 0.9rem;
+        z-index: 9999;
+        /* Ensure it appears above other content */
+    }
+
+    .main-nav-list.active {
+        display: flex;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .main-nav-link {
+        display: block;
+        padding: 1.2rem 3.2rem;
+        font-size: 2rem;
+        color: #e6e8eb;
+        text-decoration: none;
+    }
+
+    .main-nav-link:hover {
+        background-color: #525c75;
+    }
+
+}
+
+@media (max-width: 30em) {
+    html {
+        font-size: 32.5%;
     }
 }
