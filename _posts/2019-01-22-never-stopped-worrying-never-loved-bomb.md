@@ -5,6 +5,7 @@ author: sal
 categories: [Jekyll]
 image: assets/images/blog_page/14.jpg
 tags: featured
+important: true
 ---
 
 I’ve been through fire and water, I tell you! From my earliest pebblehood the wildest things you could imagine have been happening to this world of ours, and I have been right in the midst of them.

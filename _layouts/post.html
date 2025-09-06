@@ -91,7 +91,12 @@ layout: default
       <div class="mb-4">
         <span class="taglist">
           {% for tag in page.tags %}
-          <a class="sscroll text-danger" href="{{ '/categories.html' | relative_url }}#{{ category | downcase }}">
+          <a
+            class="sscroll text-danger"
+            href="{{ '/tags.html' | relative_url }}#{{ tag | downcase }}"
+          >
+            #{{ tag }}
+          </a>
           {% endfor %}
         </span>
       </div>
