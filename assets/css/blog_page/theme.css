@@ -160,7 +160,7 @@ body.dark-mode .text-muted {
 }
 
 body.dark-mode .spanborder span {
-	border-bottom: 1px solid #e8f3ec;
+	border-bottom: none;
 }
 
 body.dark-mode .navbar {
@@ -1039,7 +1039,7 @@ body.dark-mode .alertbar {
 }
 
 .spanborder span {
-	border-bottom: 1px #e8f3ec;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.44);
 	display: inline-block;
 	padding-bottom: 20px;
 	margin-bottom: -1px;
