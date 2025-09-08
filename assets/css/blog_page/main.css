@@ -13071,5 +13071,5 @@ body.dark-mode .btn-follow {
 
 .ionicon {
   font-size: 1.2rem;
-  fill: #6c757d;
+  fill: #6c757d !important;
 }
