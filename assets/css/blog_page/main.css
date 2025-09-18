@@ -13107,7 +13107,7 @@ body.dark-mode .btn-follow {
     /* 使第三個元素的內容水平置中 */
   }
 
-  @media(max-width: 460px) {
+  @media(max-width: 530px) {
 
     .row.align-items-center.justify-content-between> :nth-child(1),
     .row.align-items-center.justify-content-between> :nth-child(2) {
