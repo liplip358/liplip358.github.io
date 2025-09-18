@@ -1,19 +1,13 @@
+// /assets/js/blog_page/dark-mode.js
+
+// 💡 這是你原始 JS 檔的「第二部分」
+// 它只負責處理按鈕的點擊事件
+
 // 自執行函式，避免污染全域
 (function () {
   const body = document.body;
 
-  // 1️⃣ 頁面一開始先套用使用者上次選擇的模式，避免閃白
-  const savedTheme = localStorage.getItem("theme");
-  if (!savedTheme || savedTheme === "dark") {
-    body.classList.add("dark-mode");
-    if (!savedTheme) localStorage.setItem("theme", "dark");
-    console.log("Applying dark mode.");
-  } else {
-    body.classList.remove("dark-mode");
-    console.log("Applying light mode.");
-  }
-
-  console.log("Page loaded. Current theme:", localStorage.getItem("theme"));
+  // 1️⃣ 初始化邏輯已經從這個檔案移除
 
   // 2️⃣ 設定切換按鈕功能
   const darkBtn = document.getElementById("dark-mode");

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-t">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ page.title }} | {{ site.name }}</title>
@@ -22,8 +22,6 @@
     <!-- Theme Stylesheet -->
     <link rel="stylesheet" href="{{ '/assets/css/blog_page/theme.css' | relative_url }}">
 
-    
-
     <!-- jQuery -->
     <script
     src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -36,10 +34,33 @@
     {% include tracking-header.html %}
 </head>
 
-<body class="{% if page.url == "/" %} homefirstpage {% endif %} dark-mode">
+<!-- 💡 關鍵 1: 移除 body 標籤上寫死的 "dark-mode" class -->
+<body class="{% if page.url == "/" %} homefirstpage {% endif %}">
 
+<!-- 💡 START: 把你原始 JS 檔的「第一部分」放在這裡 -->
+<script>
+(function () {
+  const body = document.body;
+  try {
+    // 1️⃣ 頁面一開始先套用使用者上次選擇的模式，避免閃白
+    const savedTheme = localStorage.getItem("theme");
+    if (!savedTheme || savedTheme === "dark") {
+      body.classList.add("dark-mode");
+      // 如果是第一次訪問，幫使用者設定好預設值
+      if (!savedTheme) localStorage.setItem("theme", "dark");
+    } 
+    // 注意：這裡不需要 else { body.classList.remove("dark-mode"); }
+    // 因為 body 預設就是乾淨的（亮色），所以亮色模式什麼都不用做。
+  } catch(e) {
+    // 如果 localStorage 無法存取，預設為暗色
+    console.error("Failed to apply theme from localStorage.", e);
+    body.classList.add("dark-mode");
+  }
+})();
+</script>
+<!-- 💡 END: 初始化邏輯結束 -->
 
-    <!-- Navbar -->
+    <!-- Navbar (你的網頁內容從這裡開始) -->
     <nav id="MagicMenu" class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
         <div class="container">
         <a class="navbar-brand" href="{{ '/' | relative_url }}"><strong>{{site.name}}</strong></a>
@@ -56,9 +77,6 @@
         </div>
         </div>
     </nav>
-
-    
-
     
     <!-- Search Results -->
     <div id="lunrsearchresults">
@@ -85,10 +103,6 @@
             <div>
                 <span class="navbar-brand mr-2 mb-0"><strong>Deveraph</strong></span>
                 <span>Copyright &copy; <script>document.write(new Date().getFullYear())</script></span>
-
-                <!--  Github Repo Star Btn-->
-                <!-- <a class="text-dark ml-1" target="_blank" href="https://github.com/wowthemesnet/mundana-theme-jekyll"><i class="fab fa-github"></i> Fork on Github</a> -->
-
                 <a class="ml-1" target="_blank" href="https://www.instagram.com/velseraph/">
                 <ion-icon class="ionicon" name="logo-instagram"></ion-icon>
                 </a>
@@ -106,9 +120,8 @@
 
     <button class="bright-and-dark-mode-btn dark-mode btn" id="dark-mode"><ion-icon name="contrast-outline"></ion-icon></button>
     
+    <!-- 💡 關鍵 3: 這個 JS 檔案現在只負責 "點擊事件"，初始化已由上面的腳本完成 -->
     <script src="{{ '/assets/js/blog_page/dark-mode.js' | relative_url }}"></script>
 
 </body>
-
-
 </html>
