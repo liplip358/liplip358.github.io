@@ -89,7 +89,7 @@
     .hero-img {
         right: auto;
         left: 50%;
-        width: 60vw;
+        width: 72vw;
         animation:
             image-slide-to-center 2s 1.5s forwards,
             border-glow 1s 3.5s forwards;
@@ -144,6 +144,10 @@
 
     .header {
         overflow: visible !important;
+    }
+
+    .logo {
+        padding: 3.2rem 0;
     }
 
     .hero-text-box {

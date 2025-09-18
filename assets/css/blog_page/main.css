@@ -232,6 +232,8 @@ figure {
 img {
   vertical-align: middle;
   border-style: none;
+  display: block;
+  margin: 0 auto;
 }
 
 svg {
@@ -7550,8 +7552,12 @@ button.bg-lightblue:focus {
   background-color: transparent !important;
 }
 
+body.dark-mode .border {
+  border: 1px solid #e8f3ec;
+}
+
 .border {
-  border: 1px solid #e8f3ec !important;
+  border: 1px solid #999;
 }
 
 .border-top {
@@ -13072,4 +13078,33 @@ body.dark-mode .btn-follow {
 .ionicon {
   font-size: 1.2rem;
   fill: #6c757d !important;
+}
+
+.col-md-3.mb-4.mb-md-0 {
+  align-self: center;
+}
+
+@media(max-width: 768px) {
+
+
+  .text-dark.mb-0 {
+    text-align: center;
+  }
+
+  .icon-block.mt-3.d-flex.justify-content-between {
+    justify-self: center;
+  }
+
+  .p-4.border.rounded {
+    text-align: center;
+  }
+
+
+  .row.align-items-center.justify-content-between> :nth-child(3) {
+    flex: 1 0 100%;
+    /* 讓第三個元素占據整個寬度 */
+    text-align: center;
+    /* 使第三個元素的內容水平置中 */
+  }
+
 }
