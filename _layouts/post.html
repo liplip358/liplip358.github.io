@@ -194,8 +194,26 @@ visible_posts[prev_post_index] %} {% endif %}
   <div class="container">
     <div class="row prevnextlinks small font-weight-bold button-bar">
       {% if prev_post_index < visible_posts.size %}
-      <div class="col-md-6 rightborder pl-0">
-        <span>&larr;</span>
+      <div
+        class="col-md-6 rightborder pl-0"
+        style="display: flex; align-items: center"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-6"
+          style="width: 1rem; margin-right: 0.5rem"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="m18.75 4.5-7.5 7.5 7.5 7.5m-6-15L5.25 12l7.5 7.5"
+          />
+        </svg>
+
         <a class="text-dark" href="{{ site.baseurl }}{{ prev_post.url }}">
           <!-- {% if prev_post.image %}
           <img
@@ -208,7 +226,10 @@ visible_posts[prev_post_index] %} {% endif %}
         </a>
       </div>
       {% endif %} {% if next_post_index >= 0 %}
-      <div class="col-md-6 text-right pr-0">
+      <div
+        class="col-md-6 text-right pr-0"
+        style="display: flex; align-items: center; justify-content: flex-end"
+      >
         <a class="text-dark" href="{{ site.baseurl }}{{ next_post.url }}">
           {{ next_post.title }}
           <!-- {% if next_post.image %}
@@ -219,7 +240,21 @@ visible_posts[prev_post_index] %} {% endif %}
           />
           {% endif %} -->
         </a>
-        <span>&rarr;</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-6"
+          style="width: 1rem; margin-left: 0.5rem"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="m5.25 4.5 7.5 7.5-7.5 7.5m6-15 7.5 7.5-7.5 7.5"
+          />
+        </svg>
       </div>
       {% endif %}
     </div>
