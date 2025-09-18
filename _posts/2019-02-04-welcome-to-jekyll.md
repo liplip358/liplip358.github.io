@@ -2,6 +2,7 @@
 layout: post
 title: "Welcome to Jekyll!"
 categories: [Jekyll]
+tags: [featured, summer]
 image: assets/images/blog_page/demo1.jpg
 hidden: true
 ---
