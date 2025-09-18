@@ -27,14 +27,14 @@ layout: default
           </p>
           <h1 class="display-4 mb-4 article-headline">{{ page.title }}</h1>
           <div class="d-flex align-items-center">
-            {% if author.avatar %}
+            <!-- {% if author.avatar %}
             <img
               class="rounded-circle"
               src="{{site.baseurl}}/{{author.avatar}}"
               alt="{{author.name}}"
               width="70"
             />
-            {% endif %}
+            {% endif %} -->
             <small class="ml-3">
               {{ author.name }}
               <!-- <span
@@ -93,7 +93,7 @@ layout: default
           {% for tag in page.tags %}
           <a
             class="sscroll text-danger"
-            href="{{ '/tags.html' | relative_url }}#{{ tag | downcase }}"
+            href="{{ 'blog/tags.html' | relative_url }}#{{ tag | downcase }}"
           >
             #{{ tag }}
           </a>
@@ -150,14 +150,14 @@ layout: default
       {% if page.author %}
       <div class="row mt-5">
         <div class="col-md-2 align-self-center">
-          {% if author.avatar %}
+          <!-- {% if author.avatar %}
           <img
             class="rounded-circle"
             src="{{site.baseurl}}/{{author.avatar}}"
             alt="{{author.name}}"
             width="90"
           />
-          {% endif %}
+          {% endif %} -->
         </div>
         <!-- <div class="col-md-10">
           <h5 class="font-weight-bold">
@@ -182,32 +182,44 @@ layout: default
 </div>
 
 <!-- Aletbar Prev/Next -->
+{% assign visible_posts = site.posts | where_exp: "item", "item.hidden != true"
+%} {% for post in visible_posts %} {% if post.url == page.url %} {% assign
+current_post_index = forloop.index0 %} {% endif %} {% endfor %} {% if
+current_post_index %} {% assign next_post_index = current_post_index | minus: 1
+%} {% assign prev_post_index = current_post_index | plus: 1 %} {% assign
+next_post = visible_posts[next_post_index] %} {% assign prev_post =
+visible_posts[prev_post_index] %} {% endif %}
+
 <div class="alertbar">
   <div class="container">
     <div class="row prevnextlinks small font-weight-bold button-bar">
-      {% if page.previous.url %}
+      {% if prev_post_index < visible_posts.size %}
       <div class="col-md-6 rightborder pl-0">
-        <a class="text-dark" href="{{ site.baseurl }}{{ page.previous.url }}"
-          >{% if page.previous.image %}
+        <span>&larr;</span>
+        <a class="text-dark" href="{{ site.baseurl }}{{ prev_post.url }}">
+          <!-- {% if prev_post.image %}
           <img
             height="30px"
             class="mr-1"
-            src="{{site.baseurl}}/{{page.previous.image}}"
+            src="{{site.baseurl}}/{{prev_post.image}}"
           />
-          {% endif %} {{page.previous.title}}</a
-        >
+          {% endif %} -->
+          {{ prev_post.title }}
+        </a>
       </div>
-      {% endif %} {% if page.next.url %}
+      {% endif %} {% if next_post_index >= 0 %}
       <div class="col-md-6 text-right pr-0">
-        <a class="text-dark" href="{{ site.baseurl }}{{ page.next.url }}">
-          {{page.next.title}} {% if page.next.image %}
+        <a class="text-dark" href="{{ site.baseurl }}{{ next_post.url }}">
+          {{ next_post.title }}
+          <!-- {% if next_post.image %}
           <img
             height="30px"
             class="ml-1"
-            src="{{site.baseurl}}/{{page.next.image}}"
+            src="{{site.baseurl}}/{{next_post.image}}"
           />
-          {% endif %}</a
-        >
+          {% endif %} -->
+        </a>
+        <span>&rarr;</span>
       </div>
       {% endif %}
     </div>

@@ -14,7 +14,7 @@
   {% assign counter = 0 %}
   var documents = [
   {% for page in site.pages %}
-  {% if page.url contains '.xml' or page.url contains 'assets' or page.hidden %}
+  {% if page.url contains '.xml' or page.url contains 'assets' %}
   {% else %}
   {
     "id": {{ counter }},
@@ -24,15 +24,12 @@
   }{% assign counter = counter | plus: 1 %},{% endif %}
   {% endfor %}
   {% for post in site.posts %}
-  {% if post.hidden %}
-  {% else %}
   {
     "id": {{ counter }},
     "url": "{{ post.url | relative_url }}",
     "title": "{{ post.title }}",
     "body": "{{ post.date | date: '%Y/%m/%d' }} - {{ post.content | markdownify | strip_html | strip_newlines | replace: '"', ' ' | escape }}"
   }{% assign counter = counter | plus: 1 %}{% if forloop.last == false %},{% endif %}
-  {% endif %}
   {% endfor %}
   ];
 
