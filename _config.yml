@@ -5,7 +5,7 @@ logo: "assets/images/blog_page/logo.png"
 favicon: "assets/images/blog_page/favicon.ico"
 baseurl: ""
 # disqus: "demowebsite"
-email: "wowthemesnet@gmail.com"
+# email: "wowthemesnet@gmail.com"
 # mailchimp-list: "https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b"
 
 include: ["_pages"]
@@ -21,11 +21,12 @@ plugins:
 authors:
   deveraph:
     name: Deveraph
-    site: https://www.wowthemes.net
-    # avatar: /assets/images/avatar2.jpg
+    site: https://deveraph.com
+    avatar: assets/images/blog_page/Crop Image 1.png
     bio: "Blogger, fashionista, love to explore new ideas and write on my morning coffee!"
     email: fakemail@gmail.com
     # twitter: https://twitter.com/wowthemesnet
+    instagram: https://www.instagram.com/velseraph/
 
 # Defaults
 defaults:
