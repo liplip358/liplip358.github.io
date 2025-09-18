@@ -13107,4 +13107,16 @@ body.dark-mode .btn-follow {
     /* 使第三個元素的內容水平置中 */
   }
 
+  @media(max-width: 460px) {
+
+    .row.align-items-center.justify-content-between> :nth-child(1),
+    .row.align-items-center.justify-content-between> :nth-child(2) {
+      flex: 1 0 100%;
+      /* 讓第三個元素占據整個寬度 */
+      text-align: center;
+      /* 使第三個元素的內容水平置中 */
+    }
+
+  }
+
 }
