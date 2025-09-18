@@ -17,6 +17,7 @@
             <a
               class="text-capitalize text-muted smoothscroll"
               href="{{ '/blog/categories.html' | relative_url }}#{{ category | downcase }}"
+              style="color: #ea2f65"
               >{{ category }}</a
             >
             {% unless forloop.last %}, {% endunless %} {% endfor %}
