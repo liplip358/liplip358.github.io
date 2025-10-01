@@ -64,11 +64,11 @@ collections:
 
 # Exclude metadata and development time dependencies (like Grunt plugins)
 exclude:
-  [
-    README.markdown,
-    package.json,
-    grunt.js,
-    Gruntfile.js,
-    Gruntfile.coffee,
-    node_modules,
-  ]
+  - README.markdown
+  - package.json
+  - grunt.js
+  - Gruntfile.js
+  - Gruntfile.coffee
+  - node_modules
+  - _posts/archived/ # 確保是以資料夾路徑的形式設置
+
